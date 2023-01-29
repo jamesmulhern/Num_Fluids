@@ -66,6 +66,15 @@ p = zeros(Ny, Nx);
 T = zeros(M,1);
 TM = reshape(T,Ny,Nx);
 
+for k = 1:Nx
+    TM(:, k) = xcenter(k);
+end
+
+T = TM(:);
+
+
+
+
 
 %% Boundary conditions
 
@@ -83,9 +92,6 @@ BC.u.bottom = zeros(1 ,Nx-1);   BC.v.bottom = zeros(1   ,Nx);
 
 BC.T.left   = zeros(Ny,1);
 BC.T.right  = ones(Ny,1);
-BC.T.top    = xcenter;
-BC.T.bottom = ycenter;
-
 BC.T.top    = linspace(0,1,Nx);
 BC.T.bottom = linspace(0,1,Nx);
 %% LHS matrices
